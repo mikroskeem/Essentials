@@ -4,9 +4,9 @@ main: com.earth2me.essentials.Essentials
 # Note to developers: This next line cannot change, or the automatic versioning system will break.
 version: ${full.version}
 website: http://tiny.cc/EssentialsCommands
-description: Provides an essential, core set of commands for Bukkit.
+description: Provides an essential, core set of commands for Bukkit. Crafterz.ee fork
 softdepend: [Vault]
-authors: [Zenexer, ementalo, Aelux, Brettflan, KimKandor, snowleo, ceulemans, Xeology, KHobbits, md_5, Iaccidentally, drtshock, vemacs, SupaHam, md678685]
+authors: [Zenexer, ementalo, Aelux, Brettflan, KimKandor, snowleo, ceulemans, Xeology, KHobbits, md_5, Iaccidentally, drtshock, vemacs, SupaHam, md678685, mikroskeem]
 api-version: 1.13
 commands:
   afk:
