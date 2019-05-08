@@ -27,6 +27,12 @@ public class Commandhat extends EssentialsCommand {
             if (head == null || head.getType() == Material.AIR) {
                 user.sendMessage(tl("hatEmpty"));
             } else {
+                // mikroskeem start - Don't allow removing helmets with 'Curse of Binding' enchantment
+                if (head.containsEnchantment(org.bukkit.enchantments.Enchantment.BINDING_CURSE)) {
+                    user.sendMessage(tl("hatCursed"));
+                    return;
+                }
+                // mikroskeem end
                 final ItemStack air = new ItemStack(Material.AIR);
                 inv.setHelmet(air);
                 InventoryWorkaround.addItems(user.getBase().getInventory(), head);
@@ -34,6 +40,13 @@ public class Commandhat extends EssentialsCommand {
             }
         } else {
             final ItemStack hand = user.getItemInHand();
+            // mikroskeem start - Don't allow removing helmets with 'Curse of Binding' enchantment
+            ItemStack headItem = user.getBase().getInventory().getHelmet();
+            if ((headItem != null && headItem.getType() != Material.AIR) && headItem.containsEnchantment(org.bukkit.enchantments.Enchantment.BINDING_CURSE)) {
+                user.sendMessage(tl("hatCursed"));
+                return;
+            }
+            // mikroskeem end
             if (hand != null && hand.getType() != Material.AIR) {
                 if (hand.getType().getMaxDurability() == 0) {
                     final PlayerInventory inv = user.getBase().getInventory();
