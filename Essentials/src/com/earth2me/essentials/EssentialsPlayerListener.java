@@ -733,6 +733,12 @@ public class EssentialsPlayerListener implements Listener {
                 && event.getCursor().getType() != Material.AIR && event.getCursor().getType().getMaxDurability() == 0
                 && !MaterialUtil.isSkull(event.getCursor().getType())
                 && ess.getUser(event.getWhoClicked()).isAuthorized("essentials.hat") && !ess.getUser(event.getWhoClicked()).isAuthorized("essentials.hat.prevent-type." + event.getCursor().getType().name().toLowerCase())) {
+                // mikroskeem start - Don't allow removing helmets with 'Curse of Binding' enchantment
+                final ItemStack headItem = ((PlayerInventory) clickedInventory).getHelmet();
+                if (headItem != null && headItem.getType() != Material.AIR && headItem.containsEnchantment(org.bukkit.enchantments.Enchantment.BINDING_CURSE)) {
+                    return;
+                }
+                // mikroskeem end
                 event.setCancelled(true);
                 final PlayerInventory inv = (PlayerInventory) clickedInventory;
                 final ItemStack head = inv.getHelmet();
