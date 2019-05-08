@@ -51,8 +51,10 @@
         <module>EssentialsXMPP</module>
         <module>nms/NMSProvider</module>
         <module>nms/UpdatedMetaProvider</module>
+        <!-- mikroskeem - disable legacy 1.8.x support
         <module>nms/1_8_R1Provider</module>
         <module>nms/1_8_R2Provider</module>
+        -->
         <module>nms/LegacyProvider</module>
         <module>nms/ReflectionProvider</module>
         <module>nms/FlattenedProvider</module>
