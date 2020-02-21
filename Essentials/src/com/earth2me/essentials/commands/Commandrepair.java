@@ -23,6 +23,7 @@ public class Commandrepair extends EssentialsCommand {
     public Commandrepair() {
         super("repair");
     }
+    @SuppressWarnings("deprecation") private static final org.bukkit.NamespacedKey THRONE_MONSTEREYE_SPAWNER_PICKAXE = new org.bukkit.NamespacedKey("monstereye", "spawner_pickaxe"); // mikroskeem - Don't allow repairing Throne.ee-specific items
 
     @Override
     public void run(final Server server, final User user, final String commandLabel, final String[] args) throws Exception {
@@ -81,6 +82,12 @@ public class Commandrepair extends EssentialsCommand {
         if (material.isBlock() || material.getMaxDurability() < 1) {
             throw new Exception(tl("repairInvalidType"));
         }
+
+        // mikroskeem start - Don't allow repairing Throne.ee-specific items
+        if (item.hasItemMeta() && item.getItemMeta().getPersistentDataContainer().has(THRONE_MONSTEREYE_SPAWNER_PICKAXE, org.bukkit.persistence.PersistentDataType.BYTE)) {
+            throw new Exception(tl("repairInvalidType"));
+        }
+        // mikroskeem end
 
         if (item.getDurability() == 0) {
             throw new Exception(tl("repairAlreadyFixed"));
